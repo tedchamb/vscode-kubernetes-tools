@@ -21,7 +21,7 @@ export class NodejsDebugProvider implements IDebugProvider {
         return true;
     }
 
-    public async startDebugging(workspaceFolder: string, sessionName: string, port: number): Promise<boolean> {
+    public async startDebugging(workspaceFolder: string, sessionName: string, port: number, pod: string): Promise<boolean> {
 
         const debugConfiguration: vscode.DebugConfiguration = {
             type: "node",
@@ -92,5 +92,9 @@ export class NodejsDebugProvider implements IDebugProvider {
         }
 
         return undefined;
+    }
+
+    public isPortRequired(): boolean {
+        return true;
     }
 }

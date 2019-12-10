@@ -30,7 +30,7 @@ export class PythonDebugProvider implements IDebugProvider {
         return false;
     }
 
-    public async startDebugging(workspaceFolder: string, sessionName: string, port: number): Promise<boolean> {
+    public async startDebugging(workspaceFolder: string, sessionName: string, port: number, pod: string): Promise<boolean> {
         const debugConfiguration: vscode.DebugConfiguration = {
             type: "python",
             request: "attach",
@@ -88,5 +88,9 @@ export class PythonDebugProvider implements IDebugProvider {
         }
 
         return undefined;
+    }
+
+    public isPortRequired(): boolean {
+        return true;
     }
 }

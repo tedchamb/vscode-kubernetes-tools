@@ -1,11 +1,13 @@
 import * as vscode from "vscode";
 
 import { IDebugProvider } from "./debugProvider";
+import { DotNetDebugProvider } from "./dotNetDebugProvider";
 import { JavaDebugProvider } from "./javaDebugProvider";
 import { NodejsDebugProvider } from "./nodejsDebugProvider";
 import { PythonDebugProvider } from "./pythonDebugProvider";
 
 const supportedProviders: IDebugProvider[] = [
+    new DotNetDebugProvider(),
     new JavaDebugProvider(),
     new NodejsDebugProvider(),
     new PythonDebugProvider()

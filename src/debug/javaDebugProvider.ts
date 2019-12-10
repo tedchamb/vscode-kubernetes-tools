@@ -35,7 +35,7 @@ export class JavaDebugProvider implements IDebugProvider {
         return false;
     }
 
-    public async startDebugging(workspaceFolder: string, sessionName: string, port: number): Promise<boolean> {
+    public async startDebugging(workspaceFolder: string, sessionName: string, port: number, pod: string): Promise<boolean> {
         const debugConfiguration = {
             type: "java",
             request: "attach",
@@ -116,5 +116,9 @@ export class JavaDebugProvider implements IDebugProvider {
         return {
             debugPort: Number(rawDebugPortInfo)
         };
+    }
+
+    public isPortRequired(): boolean {
+        return true;
     }
 }
