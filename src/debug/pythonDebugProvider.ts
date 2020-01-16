@@ -91,8 +91,9 @@ export class PythonDebugProvider implements IDebugProvider {
         return undefined;
     }
 
-    public filterSupportedProcesses(_processes: ProcessInfo[]): ProcessInfo[] | undefined {
-        return undefined;
+    public filterSupportedProcesses(processes: ProcessInfo[]): ProcessInfo[] | undefined {
+        return processes.filter((processInfo) => (processInfo.command.toLowerCase().startsWith('python ') ||
+                                                  processInfo.command.indexOf('/python ') >= 0)); // full path
     }
 
     public isPortRequired(): boolean {

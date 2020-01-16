@@ -121,8 +121,9 @@ export class JavaDebugProvider implements IDebugProvider {
         };
     }
 
-    public filterSupportedProcesses(_processes: debugUtils.ProcessInfo[]): debugUtils.ProcessInfo[] | undefined {
-        return undefined;
+    public filterSupportedProcesses(processes: debugUtils.ProcessInfo[]): debugUtils.ProcessInfo[] | undefined {
+        return processes.filter((processInfo) => (processInfo.command.toLowerCase().startsWith('java ') ||
+                                                  processInfo.command.indexOf('/java ') >= 0)); // full path
     }
 
     public isPortRequired(): boolean {

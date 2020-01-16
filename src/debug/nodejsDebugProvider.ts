@@ -95,8 +95,9 @@ export class NodejsDebugProvider implements IDebugProvider {
         return undefined;
     }
 
-    public filterSupportedProcesses(_processes: ProcessInfo[]): ProcessInfo[] | undefined {
-        return undefined;
+    public filterSupportedProcesses(processes: ProcessInfo[]): ProcessInfo[] | undefined {
+        return processes.filter((processInfo) => (processInfo.command.toLowerCase().startsWith('node ') ||
+                                                  processInfo.command.indexOf('/node ') >= 0)); // full path
     }
 
     public isPortRequired(): boolean {
